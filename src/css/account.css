@@ -1,0 +1,71 @@
+.account_wrapper {
+    height: 100%;
+    width: 100%;
+    padding: 3px;
+}
+
+.personal {
+    height: 20%;
+    width: 100%;
+    background-color: #c5c5c5;
+    display: flex;
+}
+
+.personal__ava {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.personal__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.data__login {
+    font-size: 25px;
+}
+
+.admin_panel {
+    height: 80%;
+}
+
+.addUserForm {
+    display: flex;
+}
+
+.addUserForm>div {
+    display: block;
+}
+
+.user_list {
+    padding: 10px;
+    max-height: 420px;
+    overflow: auto;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    background-color: #d2d2d2;
+    margin: 1px;
+    padding-left: 10px;
+}
+
+.user__data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user__login>p {
+    font-size: 120%;
+    font-weight: 1000;
+}
+
+.user__data>div {
+    margin: 5px;
+    display: flex;
+    align-items: center;
+}
