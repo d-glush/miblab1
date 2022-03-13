@@ -4,7 +4,7 @@ class DBDecoder
 {
     private string $dbFilePath;
     private string $dbDecodedFilePath;
-    private string $trueSalt = '131256754sgDvsdg=';
+    private string $trueSalt = 'secret';
     private string $iVector = 'vectorvectorvect';
     private string $encodeAlgo = 'aes-128-cbc-hmac-sha256';
 
@@ -30,6 +30,7 @@ class DBDecoder
     public function encode(): void
     {
         $content = file_get_contents($this->dbDecodedFilePath);
+        if (!$content) return;
         $encodedContent = openssl_encrypt(
             $content,
             $this->encodeAlgo,

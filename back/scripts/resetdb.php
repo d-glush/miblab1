@@ -1,6 +1,6 @@
 <?php
 
-$trueSalt = '131256754sgDvsdg=';
+$trueSalt = 'secret';
 $iVector = 'vectorvectorvect';
 $encodeAlgo = 'aes-128-cbc-hmac-sha256';
 $dbFilePath = $_SERVER['DOCUMENT_ROOT'] . '/src/db/database.db';
