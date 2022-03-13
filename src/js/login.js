@@ -42,7 +42,7 @@
           case 426:
             document.cookie = `login=${login};max-age=6000;path=/`;
             document.cookie = `secret=none;max-age=6000;path=/`;
-            window.location = '/resetPassword.php?login=' + login;
+            window.location = '/resetPassword.php?login=' + login + '&firstSet=true';
             errorLayout.innerText = 'Необходимо установить пароль!'
             break;
 

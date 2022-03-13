@@ -3,6 +3,7 @@
 include_once '../core/init.php';
 
 $login = $_POST['login'];
+$oldPassword = $_POST['old_password'] ?? "";
 $password = $_POST['password'];
 
 $userService = new UserService();
@@ -13,7 +14,7 @@ if (!$authService->isAuthed()) {
     exit;
 }
 
-if (!$authService->resetPassword($login, $password)) {
+if (!$authService->resetPassword($login, $password, $oldPassword)) {
     (new Response(['message' => 'invalidPassword'], 402))->display();
     exit;
 }

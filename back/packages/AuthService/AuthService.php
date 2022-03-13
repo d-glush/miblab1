@@ -67,9 +67,12 @@ class AuthService
         return ($this->getCurrentUser()->getRole()->getRole() === Role::ROLE_ADMIN);
     }
 
-    public function resetPassword(string $login, string $password): bool
+    public function resetPassword(string $login, string $password, string $oldPassword): bool
     {
         $user = $this->userService->getUserByLogin($login);
+        if ($user->getPassword() !== $oldPassword) {
+            return false;
+        }
         if ($user->isPasswordLimit()) {
             if (!$this->validPassword($password)) {
                 return false;

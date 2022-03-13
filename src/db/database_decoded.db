@@ -1,0 +1,1 @@
+[{"login":"admin","password":"1","role":"admin","is_banned":false,"is_password_limit":false},{"login":"1","password":"q++","role":"user","is_banned":false,"is_password_limit":true}]

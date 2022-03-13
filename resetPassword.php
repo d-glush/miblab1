@@ -6,12 +6,18 @@
 <div class="reset_password_wrapper">
     <div class="title">Смена пароля</div>
     <form id="loginForm">
+        <?php if (!isset($_GET['firstSet'])) {?>
         <div>
-            <label>Пароль</label>
+            <label>Старый пароль:</label>
+            <input type="password" name="old_password">
+        </div>
+        <?php } ?>
+        <div>
+            <label>Пароль:</label>
             <input type="password" name="password">
         </div>
         <div>
-            <label>Подтвердите пароль</label>
+            <label>Подтвердите пароль:</label>
             <input type="password" name="password_approve">
         </div>
         <div>
