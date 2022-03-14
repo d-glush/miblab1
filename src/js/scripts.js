@@ -24,6 +24,6 @@ function getCookieUserData() {
 let loginMatch = document.cookie.match(/login=(.+?)(;|$)/);
 let secretMatch = document.cookie.match(/secret=(.+?)(;|$)/);
 
-if ((!loginMatch || !secretMatch) && window.location.pathname !== '/') {
+if ((!loginMatch || !secretMatch) && window.location.pathname !== '/' && window.location.pathname !== '/login.php') {
   window.location = '/';
 }

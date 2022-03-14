@@ -14,10 +14,7 @@
             <label>Пароль:</label>
             <input type="password" name="password">
         </div>
-        <div>
-            <label>Секретный код БД:</label>
-            <input type="password" name="dbSecret">
-        </div>
+
         <div>
             <button type="submit">Войти</button>
         </div>

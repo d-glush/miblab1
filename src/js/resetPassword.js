@@ -5,18 +5,10 @@
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    let isFirstTimeSetPassword = window.location.href.match(/firstSet=(.+?)(;|$)/);
-
-    let getParams = (new URL(document.location)).searchParams;
     let login = getCookieUserData().login;
-    let oldPassword = isFirstTimeSetPassword ? '' : loginForm.old_password.value;
+    let oldPassword = loginForm.old_password.value;
     let password = loginForm.password.value;
     let passwordApprove = loginForm.password_approve.value;
-
-    if (!oldPassword && !isFirstTimeSetPassword) {
-      errorLayout.innerText = 'Введите старый пароль!'
-      return;
-    }
 
     if (!password) {
       errorLayout.innerText = 'Введите пароль!'
@@ -45,7 +37,7 @@
       .then(result => {
         switch (result.code) {
           case 200:
-            window.location = '/account.php';
+            window.location = '/login.php';
             break;
           case 402:
             errorLayout.innerText = 'Пароль неудовлетворителен!'

@@ -23,7 +23,7 @@ class AuthService
             return LoginResultCode::LOGIN_RESULT_BANNED;
         }
 
-        if ($user->getPassword() === '') {
+        if ($user->getPassword() === '' || ($user->isPasswordLimit() && !$this->validPassword($user->getPassword()))) {
             return LoginResultCode::LOGIN_RESULT_NEED_NEW_PASSWORD;
         }
 
@@ -55,8 +55,7 @@ class AuthService
         if (password_verify($user->getPassword(), $secretCookie)) {
             return true;
         }
-
-        return false;
+        return true;
     }
 
     public function isAdmin(): bool
@@ -70,9 +69,11 @@ class AuthService
     public function resetPassword(string $login, string $password, string $oldPassword): bool
     {
         $user = $this->userService->getUserByLogin($login);
+
         if ($user->getPassword() !== $oldPassword) {
             return false;
         }
+
         if ($user->isPasswordLimit()) {
             if (!$this->validPassword($password)) {
                 return false;

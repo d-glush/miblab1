@@ -9,21 +9,16 @@
 
     let login = loginForm.login.value;
     let password = loginForm.password.value;
-    let dbSecret = loginForm.dbSecret.value;
 
     if (!login) {
       errorLayout.innerText = 'Введите логин!'
       return;
     }
-    if (!dbSecret) {
-      errorLayout.innerText = 'Введите ключ!'
-      return;
-    }
+
 
     let data = new FormData();
     data.append('login', login);
     data.append('password', password);
-    data.append('dbSecret', dbSecret);
 
     fetch('/back/scripts/login.php', {
       mode: "no-cors",

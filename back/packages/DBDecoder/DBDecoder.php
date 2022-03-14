@@ -14,7 +14,7 @@ class DBDecoder
         $this->dbDecodedFilePath = $_SERVER['DOCUMENT_ROOT'] . '/src/db/database_decoded.db';
     }
 
-    public function decode(string $salt): void
+    public function decode(string $salt): bool
     {
         $encodedContent = file_get_contents($this->dbFilePath);
         $content = openssl_decrypt(
@@ -24,7 +24,18 @@ class DBDecoder
             OPENSSL_RAW_DATA,
             $this->iVector
         );
-        file_put_contents($this->dbDecodedFilePath, $content);
+        if ($this->isJson($content)) {
+            file_put_contents($this->dbDecodedFilePath, $content);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function isJson(string $content): bool
+    {
+        json_decode($content);
+        return json_last_error() === JSON_ERROR_NONE;
     }
 
     public function encode(): void
